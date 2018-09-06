@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>登陆</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+  	<link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+<div class="container">
+<div class="login-box">
+  <div class="login-title">
+  <a>login</a>
+  </div>
+  	<div class="login-input">
+
+	  <div class="userName">
+	    <label for="userName">username</label>
+	    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入账号">
+	  </div>
+
+	  <div class="password">
+	    <label for="password">password</label>
+	    <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+	  </div>
+
+		<div class="verify">
+	  	<img src="" onclick="verifyCode()" id="verify" />
+	  </div>
+	  <div class="verifyCode">
+	  	<label for="verifyCode">verifycode</label>
+	  	<input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="请输入验证码" autocomplete="off" disableautocomplete>
+	  </div>
+
+	  
+
+	  <div class="checkbox">
+	    <label>
+	      <input  type="checkbox" id="rememberMe" value=true> remember me
+	    </label>
+	  </div>
+
+    </div>
+  <div class="login">
+  <button class="login-btn" onclick="login()">Submit</button>
+  </div>
+
+</div>
+</div>
+<script type="text/javascript" src="functionjs/code.js"></script>
+<script type="text/javascript" src="functionjs/login.js"></script>
+</body>
+</html>
