@@ -1,0 +1,21 @@
+/*body{
+    background-color: #1e88e6;
+}*/
+.row{
+
+  background-color: #1e88e6;
+
+}
+.createTime{
+  font-size: 15px;
+  /*text-align: center;*/
+}
+
+.article-title{
+  font-size: 20px;
+  /*text-align: left;*/
+}
+.nickName{
+
+  /*text-align: right;*/
+}
