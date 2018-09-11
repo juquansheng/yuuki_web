@@ -16,13 +16,10 @@ function articleList(){
             if (data.status == 200) {
                 $.each(data.data.pageDatas, function(i, item) {
                 $(".article-list").append("<p class='row'>"
-                        
-                        +"<span class='article-title'><a href='profile.html?id="+item.id+"'>"+item.title+"</a></span>"
-                        
+            
+                        +"<span class='article-title'><a href='articleDetail.html?id="+item.id+"'>"+item.title+"</a></span>"
                         +"<span class='createTime'>"+"发布时间："+item.createTimeString+"</span>"
-                        
                         +"<span class='nickName'>"+""+item.nickName+"</span>"
-                        
                         +"</p><br>");
                 });
             }else if (data.status == 401) {

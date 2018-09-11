@@ -1,0 +1,19 @@
+body{
+    background-color: #ccffff;
+}
+.row{
+
+  background-color: #6699ff;
+
+}
+.article-title{
+  font-size: 30px;
+  text-align: center;
+}
+
+.article-content{
+  text-align: center;
+  background-color: #6699ff;
+  /*text-align: left;*/
+}
+
