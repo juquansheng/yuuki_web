@@ -18,7 +18,7 @@ function login(){
             success:function(datas){
                 if (datas.status == 200) {
                     if (document.referrer = document.location) {
-                        window.location.href = "index.html"
+                        window.location.href = "/yuuki/index.html"
                     }else{
                         window.location.href = document.referrer;
                     }
@@ -65,7 +65,7 @@ function logout(){
     }
 
 function tologin(){
-        window.location.href = "login.html"
+        window.location.href = "/yuuki/login.html";
     }
 
 function islogin(){
