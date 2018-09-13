@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>注册</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/yuuki/functionjs/common.js"></script>
+  	<link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+<div class="container">
+<div class="login-box">
+  <div class="login-title">
+  <a>register</a>
+  </div>
+  	<div class="register-input">
+
+	  <div class="userName">
+	    <label for="userName">username</label>
+	    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入账号">
+	  </div>
+
+	  <div class="password">
+	    <label for="password">password</label>
+	    <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+	  </div>
+
+		<div class="nickName">
+	    <label for="nickName">nickName</label>
+	    <input type="text" class="form-control" name="nickName" id="nickName" placeholder="请输入昵称">
+	  </div>
+	  	<div class="phone">
+	    <label for="phone">phone</label>
+	    <input type="phone" class="form-control" name="phone" id="phone" placeholder="请输入手机号码">
+	  </div>
+		<div class="captcha">
+	    <label for="captcha">captcha</label>
+	    <input type="text" class="form-control" name="captcha" id="captcha" placeholder="请输入验证码">
+	    <button class="send-captcha" onclick="sendCaptcha()">发送验证码</button>
+	  </div>
+	  
+
+
+    </div>
+  <div class="login">
+  <button class="login-btn" onclick="register()">Submit</button>
+  </div>
+<div class="login">
+  <button class="login-btn" onclick="tologin()">Submit</button>
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="functionjs/code.js"></script>
+<script type="text/javascript" src="functionjs/login.js"></script>
+<script type="text/javascript" src="functionjs/register.js"></script>
+
+</body>
+</html>

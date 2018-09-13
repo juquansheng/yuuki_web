@@ -4,7 +4,7 @@ console.log("id:"+articleId);
 function articleDetail(){
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:8927/yuuki/article/getdetail?"+articleId,
+		url: globalUrl+"article/getdetail?"+articleId,
 		contentType: 'application/json; charset=UTF-8',
         dataType: 'json',
         xhrFields: {
@@ -36,12 +36,12 @@ function articleDetail(){
 articleDetail();
 
 function toeEdit(){
-        window.location.href = "/yuuki/article/html/editArticle.html";
+        window.location.href = "/yuuki/article/html/editArticle.html?"+articleId;
     }
 
 function isbelong(){
         $.ajax({
-            url:"http://localhost:8927/yuuki/article/isbelong?"+articleId,
+            url:window.globalUrl+"article/isbelong?"+articleId,
             type:"get", 
             dataType:"json",
             contentType:"application/json",
@@ -58,7 +58,7 @@ function isbelong(){
                 if (datas.status == 200) {
                     $(".isbelong").append("<button class='edit' onclick='toeEdit()'>编辑</button>");
                 }else{
-                    $(".isbelong").append("<button class='edit' onclick='toeEdit()'>编辑</button>");
+                    
                 }
             },
             error:function(datas){

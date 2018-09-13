@@ -1,7 +1,7 @@
 function profile(){
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:8927/yuuki/profile/user",
+		url: window.globalUrl+"/profile/user",
 		contentType: 'application/json; charset=UTF-8',
         dataType: 'json',
         xhrFields: {

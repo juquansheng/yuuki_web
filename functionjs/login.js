@@ -1,7 +1,7 @@
 var verifyCodeKey;
 function login(){
         $.ajax({
-            url:"http://localhost:8927/yuuki/passport/login",
+            url:window.globalUrl+"/passport/login",
             type:"post", 
             dataType:"json",
             contentType:"application/json",
@@ -17,8 +17,11 @@ function login(){
             crossDomain: true,
             success:function(datas){
                 if (datas.status == 200) {
+                    console.log(document.referrer)
+                    console.log(document.location)
                     if (document.referrer = document.location) {
-                        window.location.href = "/yuuki/index.html"
+
+                        window.location.href = document.referrer;
                     }else{
                         window.location.href = document.referrer;
                     }
@@ -37,7 +40,7 @@ function login(){
 
 function logout(){
         $.ajax({
-            url:"http://localhost:8927/yuuki/passport/logout",
+            url:window.globalUrl+"/passport/logout",
             type:"get", 
             dataType:"text",
             contentType:"application/json",
@@ -52,9 +55,9 @@ function logout(){
             success:function(datas){
                 console.log("success")
                     if (document.referrer = document.location) {
-                        window.location.href = "index.html"
+                        window.location.href = document.location;
                     }else{
-                        window.location.href = document.referrer;
+                        window.location.href = document.location;
                     }    
                
             },
@@ -67,10 +70,12 @@ function logout(){
 function tologin(){
         window.location.href = "/yuuki/login.html";
     }
-
+function toregister(){
+        window.location.href = "/yuuki/register.html";
+    }
 function islogin(){
         $.ajax({
-            url:"http://localhost:8927/yuuki/passport/islogin",
+            url:window.globalUrl+"/passport/islogin",
             type:"get", 
             dataType:"json",
             contentType:"application/json",
@@ -88,6 +93,7 @@ function islogin(){
                     $(".islogin").append("<button class='login-out' onclick='logout()'>退出登陆</button>");
                 }else{
                     $(".islogin").append("<button class='login-btn' onclick='tologin()'>登陆</button>");
+                    $(".islogin").append("<button class='login-btn' onclick='toregister()'>注册</button>");
                 }
             },
             error:function(datas){

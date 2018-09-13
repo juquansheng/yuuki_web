@@ -11,8 +11,17 @@
 <div class="islogin"></div>
 <a class="profile" href="/yuuki/profile.html">个人中心</a>
 <body>
-    <form action="http://localhost:8927/yuuki/article/edit" method="post" id="edit-form" value = "edit-form">
-    
+    <form action="http://localhost:8927/yuuki/article/edit" method="post">
+        <p>
+        文章标题：<input type="text" id="article-title" name="title" value="请填写标题">
+        </p>
+        <!-- 加载编辑器的容器 -->
+        <script id="container" name="contentString" type="text/plain">
+        这里写你的初始化内容
+        </script>
+        <p>
+        <input type="button" onclick="articleEdit()" value="发布">
+        </p>
     </form>
     <!-- 配置文件 -->
     <script type="text/javascript" src="/yuuki/ueditor/ueditor.config.js"></script>
@@ -22,7 +31,6 @@
     <script type="text/javascript">
         var ue = UE.getEditor('container',{
         initialFrameWidth : '100%',//宽度
-        initialFrameHeight: 500,//高度
         initialFrameHeight: 500,//高度
         toolbars:[
         [

@@ -1,7 +1,7 @@
 function articleList() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8927/yuuki/index/index",
+        url: window.globalUrl+"/index/index",
         /*data: {
             pageNum:pageNum,
             categoryId:1,

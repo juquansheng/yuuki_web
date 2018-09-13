@@ -20,5 +20,8 @@ body{
 }
 
 .profile{
-  text-align: center;
+  text-align: left;
+}
+.islogin{
+  text-align: left;
 }
