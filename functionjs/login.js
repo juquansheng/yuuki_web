@@ -19,9 +19,9 @@ function login(){
                 if (datas.status == 200) {
                     console.log(document.referrer)
                     console.log(document.location)
-                    if (document.referrer = document.location) {
+                    if (document.referrer = "/yuuki/register.html") {
 
-                        window.location.href = document.referrer;
+                        window.location.href = "/yuuki/index.html";
                     }else{
                         window.location.href = document.referrer;
                     }

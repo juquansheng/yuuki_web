@@ -1,8 +1,3 @@
-.islogin{
-  font-size: 20px;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-  height: 220px;
+body{
+    background-color: #ccffff;
 }

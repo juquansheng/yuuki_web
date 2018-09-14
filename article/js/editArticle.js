@@ -1,8 +1,10 @@
 var articleId = getUrl("id");
 var idValue = getValue("id");
+if (articleId) {
+    articleUpdate();
+}
 
-
-function articleDetail(){
+function articleUpdate(){
 	$.ajax({
 		type: "GET",
 		url: window.globalUrl+"article/getdetail?"+articleId,
@@ -15,13 +17,11 @@ function articleDetail(){
         success: function(data){
             console.log(data);
             if (data.status == 200) {
-
-                $("#edit-form").append("<input type='hidden' name='id' id='article-id' value="+idValue+">"
-                    +"<p>文章标题：<input class='title' id='article-title' type='text' name='title' value="+data.data.title+">"
-                    +"</p><!-- 加载编辑器的容器 --><script id='container' name='contentString' type='text/plain'>"+data.data.contentString
-                    +"</script><p><input type='button' onclick='articleEdit()' value='发布'></p>");
-                
-            
+                $("#article-title").attr("value",data.data.title);
+                $("#article-id").attr("value",idValue);
+                UE.getEditor('container').ready(function(){
+                    UE.getEditor('container').setContent(data.data.contentString);
+                });
             }else if (data.status == 401) {
                 window.location.href = "login.html"
             }else{
@@ -33,9 +33,7 @@ function articleDetail(){
         },
 	})
 }
-if (articleId) {
-    articleDetail();
-}
+
 
 
 
@@ -79,44 +77,3 @@ function articleEdit(){
         })
     }
 
-
-function articleAdd(){
-        $.ajax({
-            url:window.globalUrl+"article/edit",
-            type:"post", 
-            dataType:"json",
-            contentType:"application/json",
-            headers: {  
-            'Accept': 'application/json',  
-            'Content-Type': 'application/json'  
-            },  
-
-
-            data:JSON.stringify({"title":$("#article-title").val(),
-                "contentString":UE.getEditor('container').getContent()}),
-            xhrFields: {
-            withCredentials: true
-            },
-            crossDomain: true,
-            success:function(datas){
-                if (datas.status == 200) {
-                    console.log(datas);
-                  
-                    if (document.referrer = document.location) {
-
-                        window.location.href = document.referrer;
-                    }else{
-                        window.location.href = document.referrer;
-                    }
-                    
-                } else {
-                    console.log(datas.message)
-                    alert(datas.message)
-                }
-                //location="http://localhost:8080/yuuki/index.html"
-            },
-            error:function(){
-                alert("错误")
-            }
-        })
-    }

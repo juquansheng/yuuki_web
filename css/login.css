@@ -35,17 +35,11 @@ body{
   background-color:transparent;
 }
 .login-btn{
-  width: 200px;
-  height: 50px;
+  width: 165px;
+  height: 40px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-}
-.login-btn1{
-  width: 100px;
-  height: 30px;
-  margin-left: 50px;
-  margin-right: 100px;
 }
 .login-btn input{
   width: 200px;
