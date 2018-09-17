@@ -5,12 +5,14 @@
     <script type="text/javascript" src="/yuuki/functionjs/common.js"></script>
     <script type="text/javascript" src="/yuuki/js/param.js"></script>
     <script type="text/javascript" src="/yuuki/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="/yuuki/article/js/editArticle.js"></script>
+    
     <link rel="stylesheet" href="/yuuki/css/commom.css">
 	<title>文章编辑</title>
 </head>
 <div class="islogin"></div>
 <a class="profile" href="/yuuki/profile.html">个人中心</a>
+<a class="profile" href="/yuuki/index.html">返回首页</a>
+<a class="profile" href="/yuuki/article/html/articleList.html">文章列表</a>
 <body>
     <form action="" method="post" id="edit-form" value = "edit-form">
         <input type="hidden" name="id" id="article-id" value="">
@@ -30,7 +32,10 @@
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="/yuuki/ueditor/ueditor.all.js"></script>
     <!-- 实例化编辑器 -->
+    
+                
     <script type="text/javascript">
+        UE.getEditor('container').ready(function(){
         var ue = UE.getEditor('container',{
         initialFrameWidth : '100%',//宽度
         initialFrameHeight: 500,//高度
@@ -51,8 +56,10 @@
         ]
      ]//控制ueditor头部展示按钮
     });
+        });
     </script>
 <script type="text/javascript" src="/yuuki/functionjs/isloginAndRedirect.js"></script>
+<script type="text/javascript" src="/yuuki/article/js/editArticle.js"></script>
 
 </body>
 </html>
