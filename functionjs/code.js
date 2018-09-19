@@ -9,7 +9,15 @@ function verifyCode () {
 
 verifyCode();
 /*发送短信验证码*/
-function sendCaptcha(){
+var clock = '';
+ var nums = 10;
+ var btn;
+function sendCaptcha(thisBtn){
+
+    btn = thisBtn;
+    btn.disabled = true; //将按钮置为不可点击
+    btn.value = nums+'秒后可重新获取';
+    clock = setInterval(doLoop, 1000);
 	$.ajax({
 		type: "GET",
 		url: window.globalUrl+"/code/getCode?phone="+$("#phone").val(),
@@ -30,3 +38,16 @@ function sendCaptcha(){
         },
 	})
 }
+
+function doLoop()
+ {
+ nums--;
+ if(nums > 0){
+  btn.value = nums+'秒后可重新获取';
+ }else{
+  clearInterval(clock); //清除js定时器
+  btn.disabled = false;
+  btn.value = '点击发送验证码';
+  nums = 10; //重置时间
+ }
+ }

@@ -1,60 +1,79 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
+
 <head>
-	<meta charset="utf-8"/>
-	<title>登陆</title>
-	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/yuuki/functionjs/common.js"></script>
-  	<link rel="stylesheet" href="css/login.css">
-</head>
 
-<body>
-<a class="profile" href="/yuuki/index.html">返回首页</a>
-<div class="container">
-<div class="login-box">
-  <div class="login-title">
-  <a>login</a>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  </div>
-  	<div class="login-input">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/yuuki/functionjs/common.js"></script>
+    <!-- CSS -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <!-- <link rel="stylesheet" href="/yuuki/css/reset.css"> -->
+    <link rel="stylesheet" href="/yuuki/css/supersized.css">
+    <link rel="stylesheet" href="/yuuki/css/style.css">
+    <link rel="stylesheet" href="/yuuki/css/login.css">
 
-	  <div class="userName">
-	    <label for="userName">username</label>
-	    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入账号">
-	  </div>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-	  <div class="password">
-	    <label for="password">password</label>
-	    <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
-	  </div>
+    </head>
 
-		<div class="verify">
-	  	<img src="" onclick="verifyCode()" id="verify" />
-	  </div>
-	  <div class="verifyCode">
-	  	<label for="verifyCode">verifycode</label>
-	  	<input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="请输入验证码" autocomplete="off" disableautocomplete>
-	  </div>
+    <body>
+<a href="index.html">返回首页</a>
+        <div class="page-container">
+            <h1>Login</h1>
+            
 
-	  
 
-	  <div class="checkbox">
-	    <label>
-	      <input  type="checkbox" id="rememberMe" value=true> remember me
-	    </label>
-	  </div>
+            <div class="userName">
+                <label for="userName">username</label>
+                <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入账号">
+            </div>
 
+            <div class="password">
+                <label for="password">password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
+            </div>
+
+            <div class="verifyCode">
+                <label for="verifyCode">verifycode</label>
+                <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="请输入验证码" autocomplete="off" disableautocomplete style="width: 107px">
+                <img src="" class="verify" onclick="verifyCode()" id="verify" />
+            </div> 
+
+            <div class="login">
+              <button class="login-btn" onclick="login()">登陆</button>
+            </div>
+          <div class="login">
+            <button class="login-btn" onclick="toregister()">没有账号，去注册</button>
+        </div>
+        <div class="connect">
+            <p>Or connect with:</p>
+            <p>
+                <a class="facebook" href=""></a>
+                <a class="twitter" href=""></a>
+            </p>
+        </div>
     </div>
-  <div class="login">
-  <button class="login-btn" onclick="login()">登陆</button>
 
-  </div>
-  <div class="login">
-<button class="login-btn" onclick="toregister()">注册</button>
- </div>
-</div>
-</div>
-<script type="text/javascript" src="/yuuki/functionjs/code.js"></script>
-<script type="text/javascript" src="/yuuki/functionjs/login.js"></script>
+
+    <!-- Javascript -->
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/supersized.3.2.7.min.js"></script>
+    <script src="js/supersized-init.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script type="text/javascript" src="/yuuki/functionjs/code.js"></script>
+    <script type="text/javascript" src="/yuuki/functionjs/login.js"></script>
 </body>
+
 </html>
+
