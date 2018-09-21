@@ -1,7 +1,13 @@
+var setTotalCount = 0;
+var settotalPages = 1;
+var page = 1;
+var rows = 10;
+
+
 function articleList(){
 	$.ajax({
 		type: "POST",
-		url: window.globalUrl+"article/getlist?page=1&rows=20",
+		url: window.globalUrl+"article/getlist?page="+page+"&rows="+rows,
         data: JSON.stringify({
             "userId":null
         }),
@@ -12,6 +18,7 @@ function articleList(){
             },
         crossDomain: true,
         success: function(data){
+            $(".article-list").html("");
             console.log(data.data.pageDatas);
             if (data.status == 200) {
                 $.each(data.data.pageDatas, function(i, item) {

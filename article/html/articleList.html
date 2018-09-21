@@ -5,8 +5,11 @@
 	<script type="text/javascript" src="/yuuki/functionjs/common.js"></script>
 	<script type="text/javascript" src="/yuuki/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/yuuki/js/param.js"></script>
+	<script type="text/javascript" src="/yuuki/functionjs/paging.js"></script>
+	<link rel="stylesheet" href="/yuuki/css/paging.css">
 	<link rel="stylesheet" href="/yuuki/article/css/articleList.css">
 	<link rel="stylesheet" href="/yuuki/css/commom.css">
+	
 	<title>文章列表</title>
 </head>
 <div class="islogin"></div>
@@ -17,9 +20,28 @@
 <div class="list-title">
   <a><b>最新文章：</b></a>
  </div>
-<div class="article-list"></div>
-<script type="text/javascript" src="/yuuki/functionjs/login.js"></script>
+<div class="article-list">
+	
+</div>
+<div class="box" id="box"></div>
 <script type="text/javascript" src="/yuuki/article/js/articleList.js"></script>
+<script type="text/javascript">
+	$('#box').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: settotalPages, //总页数
+            totalCount: '合计' + setTotalCount + '条数据', // 条目总数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            callback: function(page) { // 回调函数
+                setpage = page;
+                $(".article-list").html("");
+                articleList();
+                console.log(page);
+            }
+        })
+</script>
+<script type="text/javascript" src="/yuuki/functionjs/login.js"></script>
+
 
 </body>
 </html>
