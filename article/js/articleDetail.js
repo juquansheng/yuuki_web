@@ -1,6 +1,9 @@
 var articleId = getUrl("id");
 
+
+
 console.log("id:"+articleId);
+//获取文章详情
 function articleDetail(){
 	$.ajax({
 		type: "GET",
@@ -34,11 +37,11 @@ function articleDetail(){
 	})
 }
 articleDetail();
-
+//编辑文章
 function toeEdit(){
         window.location.href = "/yuuki/article/html/editArticle.html?"+articleId;
     }
-
+//用户是否可以编辑文章
 function isbelong(){
         $.ajax({
             url:window.globalUrl+"article/isbelong?"+articleId,

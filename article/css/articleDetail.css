@@ -21,3 +21,7 @@ body{
 .isbelong{
   text-align: left;
 }
+.comment{
+    background-color: #ccffff;
+    opacity:1;
+}
