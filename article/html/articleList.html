@@ -25,21 +25,7 @@
 </div>
 <div class="box" id="box"></div>
 <script type="text/javascript" src="/yuuki/article/js/articleList.js"></script>
-<script type="text/javascript">
-	$('#box').paging({
-            initPageNo: 1, // 初始页码
-            totalPages: settotalPages, //总页数
-            totalCount: '合计' + setTotalCount + '条数据', // 条目总数
-            slideSpeed: 600, // 缓动速度。单位毫秒
-            jump: true, //是否支持跳转
-            callback: function(page) { // 回调函数
-                setpage = page;
-                $(".article-list").html("");
-                articleList();
-                console.log(page);
-            }
-        })
-</script>
+
 <script type="text/javascript" src="/yuuki/functionjs/login.js"></script>
 
 

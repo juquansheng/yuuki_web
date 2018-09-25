@@ -20,3 +20,8 @@
 
   /*text-align: right;*/
 }
+.row-article{
+    margin: 3px;
+    padding: 0;
+    list-style: none;
+}
