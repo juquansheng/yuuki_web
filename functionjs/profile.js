@@ -1,7 +1,7 @@
 function profile(){
 	$.ajax({
 		type: "GET",
-		url: window.globalUrl+"/profile/user",
+		url: window.globalUrl+"profile/user",
 		contentType: 'application/json; charset=UTF-8',
         dataType: 'json',
         xhrFields: {

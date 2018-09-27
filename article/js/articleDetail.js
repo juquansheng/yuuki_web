@@ -24,7 +24,11 @@ function articleDetail(){
                 $(".article-content").append("<p class='row'>"
                         +"<span class='article-content'>"+data.data.contentString+"</a></span>"
                         +"</p><br>");
-                
+
+                $(".article-user").append("<p class='row'>"
+                        +"<span class='nickName'><a href='/yuuki/homepage.html?id="+data.data.userId+"'>"+"作者："+data.data.nickName+"</a></span>"
+                        +"</p><br>");
+
             }else if (data.status == 401) {
                 window.location.href = "login.html"
             }else{

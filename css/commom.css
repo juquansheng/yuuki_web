@@ -1,3 +1,8 @@
 body{
     background-image: url(/yuuki/img/backgrounds/1.jpg);
 }
+
+.a-button{
+  text-align: left;
+  background-color: #FF8C00;
+}
