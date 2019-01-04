@@ -14,19 +14,25 @@
     <div class="box" id="box"></div>
     <script src="/yuuki/js/jquery-3.1.1.min.js"></script>
     <script src="/yuuki/functionjs/paging.js"></script>
-    <script>
-        var setTotalCount = 301;
-        $('#box').paging({
-            //initPageNo: 3, // 初始页码
-            totalPages: 30, //总页数
-            totalCount: '合计' + setTotalCount + '条数据', // 条目总数
-            slideSpeed: 600, // 缓动速度。单位毫秒
-            jump: true, //是否支持跳转
-            callback: function(page) { // 回调函数
-                console.log(page);
-            }
-        })
-    </script>
+    
+
+<script type="text/javascript">
+    function prom() {  
+        var name = prompt("请输入您的名字", ""); //将输入的内容赋给变量 name ，  
+    
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值  
+        if (name)//如果返回的有内容  
+        {  
+            alert("欢迎您：" + name)
+        }  
+    
+    }
+</script>
+
+<div class="login">
+    <button class="login-btn" onclick="prom()">测试弹窗</button>
+</div>
+
 </body>
 
 </html>
