@@ -20,7 +20,7 @@ jQuery(function($){
         // Components
         slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
         slides             : [    // Slideshow Images
-                                 {image : '/yuuki/img/backgrounds/1.jpg'},
+                                //  {image : '/yuuki/img/backgrounds/1.jpg'},
                                  {image : '/yuuki/img/backgrounds/2.jpg'},
                                  {image : '/yuuki/img/backgrounds/3.jpg'}
                              ]

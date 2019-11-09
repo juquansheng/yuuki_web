@@ -5,3 +5,11 @@
     top: 14px;
 }
 
+body{
+    background-image: url(/yuuki/img/backgrounds/2.jpg);
+}
+
+.a-button{
+  text-align: left;
+  background-color: #FF8C00;
+}

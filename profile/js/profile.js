@@ -25,7 +25,7 @@ function profile(){
                         +"</div>"
                         +"</div>");
             }else if (data.status == 401) {
-                window.location.href = "login.html"
+                window.location.href = "/yuuki/login.html"
             }else{
                 console.log(data.status);
             }
