@@ -33,7 +33,7 @@ function articleList(){
             
                         +"<span class='article-title'><a href='/yuuki/article/html/articleDetail.html?id="+item.id+"'>"+item.title+"</a>&ensp;&ensp;&ensp;</span>"
                         +"<span class='createTime'>"+"发布时间："+item.createTimeString+"&ensp;&ensp;&ensp;</span>"
-                        +"<span class='nickName'><a href='/yuuki/homepage.html?id="+item.userId+"'>"+"作者："+item.nickName+"</a></span>"
+                        +"<span class='nickName'><a href='/yuuki/profile/index.html?id="+item.userId+"'>"+"作者："+item.nickName+"</a></span>"
                         +"</p>");
                 });
                 pageDatas();
@@ -101,7 +101,7 @@ function updateArticleList(){
             
                         +"<span class='article-title'><a href='/yuuki/article/html/articleDetail.html?id="+item.id+"'>"+item.title+"</a>&ensp;&ensp;&ensp;</span>"
                         +"<span class='createTime'>"+"发布时间："+item.createTimeString+"&ensp;&ensp;&ensp;</span>"
-                        +"<span class='nickName'><a href='/yuuki/homepage.html?id="+item.userId+"'>"+"作者："+item.nickName+"</a></span>"
+                        +"<span class='nickName'><a href='/yuuki/profile/index.html?id="+item.userId+"'>"+"作者："+item.nickName+"</a></span>"
                         +"</p>");
                 });
             }else if (data.status == 401) {
