@@ -87,13 +87,10 @@ function updateCommentList(){
             settotalPages = data.data.totalPages;
             setTotalCount = data.data.total;
             if (data.status == 200) {
-
-                
-
+                editor.clean.tables();
                 console.log("settotalPages1="+settotalPages);
                 $.each(data.data.pageDatas, function(i, item) {
-                $(".commentList").append("<p class='row-comment'>"
-            
+                $(".commentList").append("<p class='row-comment'>"          
                         +"<span class='comment-nickName'><a href='/yuuki/article/html/articleDetail.html?id="+item.userId+"'>"+item.nickName+":"+"</a>&ensp;&ensp;&ensp;</span>"
                         +"<span class='createTime'>"+""+item.createTimeString+"<br></span>"
                         +"<span class='contentString'>"+""+item.contentString+"</span><br>"
@@ -125,16 +122,15 @@ function addComment(){
 
 
             data:JSON.stringify({"articleId":idValue,
-                "contentString":UE.getEditor('container').getContent()}),
+                "contentString":editor.html.get()}),
             xhrFields: {
             withCredentials: true
             },
             crossDomain: true,
             success:function(datas){
                 if (datas.status == 200) {
-                    console.log(datas);
+                    console.log("评论内容:"+editor.html.get());
                     updateCommentList();
-                    
                 } else if(datas.status == 401){
                     window.location.href = "/yuuki/login.html";
                 }else {

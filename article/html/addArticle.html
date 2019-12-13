@@ -10,46 +10,27 @@
     <title>文章编辑</title>
     <div class="navigation"></div>
     <link rel="stylesheet" href="/yuuki/css/navigation.css">
+
+    <link href="/yuuki/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/yuuki/froala-editor/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="/yuuki/froala-editor/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="/yuuki/froala-editor/js/plugins/image.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/font_size.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/char_counter.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/languages/zh_cn.js"></script>
 </head>
 
 <body>
-    <form action="" method="post">
-        <p>
-        文章标题：<input type="text" id="article-title" name="title" value="请填写标题">
-        </p>
-        <!-- 加载编辑器的容器 -->
-        <script id="container" name="contentString" type="text/plain">
-        这里写你的初始化内容
-        </script>
-        <p>
+    <div id="froala-editor">  
+    </div>
+    <p>
         <input type="button" onclick="articleEdit()" value="发布">
-        </p>
-    </form>
-    <!-- 配置文件 -->
-    <script type="text/javascript" src="/yuuki/ueditor/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/yuuki/ueditor/ueditor.all.js"></script>
-    <!-- 实例化编辑器 -->
-    <script type="text/javascript">
-        var ue = UE.getEditor('container',{
-        initialFrameWidth : '100%',//宽度
-        initialFrameHeight: 500,//高度
-        toolbars:[
-        [
-            'fullscreen', 'source', '|', 'undo', 'redo', '|',
-            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-            'directionalityltr', 'directionalityrtl', 'indent', '|',
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-            'simpleupload', 'insertimage', 'emotion'
-        ]
-     ]//控制ueditor头部展示按钮
-    });
-    </script>
+    </p>
 <script type="text/javascript" src="/yuuki/functionjs/isloginAndRedirect.js"></script>
 <script type="text/javascript" src="/yuuki/functionjs/navigation.js"></script>
+<script type="text/javascript" src="/yuuki/functionjs/froalaParams.js"></script>
+
 
 </body>
 </html>

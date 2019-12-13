@@ -3,158 +3,111 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="renderer" content="webkit" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Document</title>
-	<style>
-		.rptIntfPortlet .portletBody .showSection{
-			font-size: 12px;
-		}
-		.rptIntfPortlet .portletBody .showSection .showBody .showMore span.input span{
-			display: inline-block;
-			border:1px solid #999;
-			padding: 0px 8px;
-			margin: 0px 2px;
-			color: #3B5998;
-			background-color:white;
-			text-decoration: none;
-			height: 22px;
-			line-height: 22px;
-			border-radius: 3px;
-			cursor: pointer;
-		}
-		.hidden{
-			display: none;
-		}
-	</style>
+	<title>test</title>
+	<link href="/yuuki/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/froala_editor.pkgd.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/froala_editor.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/align.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/font_size.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/char_counter.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/languages/zh_cn.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/image.min.js"></script>
 	
 </head>
 <body>
-	<div class="rptIntfPortlet">
-		<div class="portletBody">
-			<div class="searchSection">
-				<div class="searchBody">
-					<label class="beginTime">开始时间<input type="date" placeholder="请输入开始时间"></label>
-					<label class="endTime">结束时间<input type="date" placeholder="请输入结束时间"></label>
-					<label class="submitTime"><input type="button" value="查询" onclick="selectAll()"></label>
-				</div>
-			</div>
-			<div class="showSection">
-				<div class="showBody">
-					<div class="showMessage"></div>
-					<div class="showMore">
-						<span class="totalNumber">0条</span>
-						<span class="totalPage">共0页</span>
-						<span class="before input hidden">
-							<span mark="1" onclick="servlet(this)">首页</span>
-							<span mark="1" onclick="servlet(this)">上一页</span>
-						</span>
-						<span class="content input">
-							<span mark="1" onclick="servlet(this)">1</span>
-						</span>
-						<span class="after input">
-							<span mark="1" onclick="servlet(this)">下一页</span>
-							<span mark="1" onclick="servlet(this)">尾页</span>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		<div class="sample">
+				<h2>Sample 1: Save to disk</h2>
+				<form>
+				  <textarea id="edit" name="content"></textarea>
+				</form>
+			  </div>
 </body>
-<script src="jquery-1.8.3.min.js"></script>
+
+
+
 <script>
-	var pageNumber=10;          //一页显示多少条数据
-	var arrayLength=5;          //多少页码形成一组
-	var totalPage=1;   			//总共的页码数
-	var indexPage=1;   			//当前的页码数
-	var totalArrayPage=1;    	//共多少组页码
-	
-	//点击页码触发的动作
-	function servlet(item){
-		
-		indexPage=parseInt($(item).attr("mark"));
-		console.log(indexPage);
-		setInput();
-	}
-	//查询时触发事件
-	function selectAll(){
-		var beginTime=$(".rptIntfPortlet .searchBody .beginTime input").val();
-		var endTime=$(".rptIntfPortlet .searchBody .endTime input").val();
-		console.log("开始时间为："+beginTime);
-		console.log("结束时间为："+endTime);
-		//输入值是否为完整的年月日时间
-		//判断结束时间是否大于开始时间
-		//通过ajax获取数据，
-		var totalNumber=191;   //值为返回数据的长度
-		totalPage=Math.ceil(totalNumber/pageNumber);
-		totalArrayPage=Math.ceil(totalPage/arrayLength);
-		//在页面上设置总页数和结果总数量
-		$(".rptIntfPortlet .showSection .showMore .totalNumber").text(totalNumber+"条");
-		$(".rptIntfPortlet .showSection .showMore .totalPage").text("共"+totalPage+"页");
-		//设置尾页的值
-		$(".rptIntfPortlet .showSection .showMore span.after span:last-child").attr("mark",totalPage);
-		console.log("页码数为："+totalPage);
-		setInput();
-	}
-	//分组页码显示
-	function setInput(){
-		//防止当前页码大于最大页码
-		if(indexPage>totalPage){
-			indexPage=totalPage;
+		$(function() {
+      $('#edit').froalaEditor({
+        imageUploadURL: '/upload_image',
+        imageUploadParams: {
+          id: 'my_editor'
+        },
+        fileUploadURL: '/upload_file',
+        fileUploadParams: {
+          id: 'my_editor'
+        },
+        videoUploadURL: '/upload_video',
+        videoUploadParams: {
+          id: 'my_editor'
+        },
+        imageManagerLoadURL: '/load_images',
+        imageManagerDeleteURL: "/delete_image",
+        imageManagerDeleteMethod: "POST"
+      })
+      // Catch image removal from the editor.
+      .on('froalaEditor.image.removed', function (e, editor, $img) {
+        $.ajax({
+          // Request method.
+          method: "POST",
+          // Request URL.
+          url: "/delete_image",
+          // Request params.
+          data: {
+            src: $img.attr('src')
+          }
+        })
+        .done (function (data) {
+          console.log ('image was deleted');
+        })
+        .fail (function (err) {
+          console.log ('image delete problem: ' + JSON.stringify(err));
+        })
+      })
+      // Catch image removal from the editor.
+      .on('froalaEditor.file.unlink', function (e, editor, link) {
+        $.ajax({
+          // Request method.
+          method: "POST",
+          // Request URL.
+          url: "/delete_file",
+          // Request params.
+          data: {
+            src: link.getAttribute('href')
+          }
+        })
+        .done (function (data) {
+          console.log ('file was deleted');
+        })
+        .fail (function (err) {
+          console.log ('file delete problem: ' + JSON.stringify(err));
+        })
+      })
+      // Catch video removal from the editor.
+      .on('froalaEditor.video.removed', function (e, editor, $vid) {
+        $.ajax({
+          // Request method.
+          method: "POST",
+          // Request URL.
+          url: "/delete_video",
+          // Request params.
+          data: {
+            src: $vid.attr('src')
+          }
+        })
+        .done (function (data) {
+          console.log ('video was deleted');
+        })
+        .fail (function (err) {
+          console.log ('video delete problem: ' + JSON.stringify(err));
+        })
+      })
+    });
+	  </script>
+<script>
+		function a(){
+			console.log("content:"+editor.html.get())
 		}
-		//防止当前页码小于1
-		if(indexPage<1){
-			indexPage=1;
-		}
-		var htmlCode="";
-		var indexArrayPage=Math.ceil(indexPage/arrayLength);    	//当前下标是第几组页码
-		var beforeArrayPage=0;      //倒数第二组的第一个下标
-		var afterArrayPage=0;
-		//控制首页、上一页;下一页、尾页的显示和隐藏
-		$(".rptIntfPortlet .showSection .showMore span.input").removeClass("hidden");
-		if(indexPage==1){
-			$(".rptIntfPortlet .showSection .showMore span.before").addClass("hidden");
-		}else if(indexPage==totalPage){
-			$(".rptIntfPortlet .showSection .showMore span.after").addClass("hidden");
-		}else{
- 
-		}
- 
-		//控制上一页、下一页中的值
-		$(".rptIntfPortlet .showSection .showMore span.before span:last-child").attr("mark",(indexPage-1));
-		$(".rptIntfPortlet .showSection .showMore span.after span:first-child").attr("mark",(indexPage+1));
- 
-		//控制页码的展示
-		if(totalPage<=arrayLength){
-			for(var i=1;i<=totalPage;i++){
-				htmlCode+='<span  onclick="servlet(this)" mark="'+i+'">'+i+'</span>';
-			}
-			$(".rptIntfPortlet .showSection .showMore span.content").html(htmlCode);
-		}else{
-			if(indexArrayPage==1){
-				for(var i=1;i<=arrayLength;i++){
-					htmlCode+='<span  onclick="servlet(this)" mark="'+i+'">'+i+'</span>';
-				}
-				htmlCode+='<span  onclick="servlet(this)" mark="'+(arrayLength+1)+'">...</span>';
-				$(".rptIntfPortlet .showSection .showMore span.content").html(htmlCode);
-			}else if(indexArrayPage==totalArrayPage){
-				beforeArrayPage=(totalArrayPage-1)*arrayLength;
-				htmlCode+='<span onclick="servlet(this)" mark="'+beforeArrayPage+'">...</span>';
-				for(var i=(beforeArrayPage+1);i<=totalPage;i++){
-					htmlCode+='<span onclick="servlet(this)" mark="'+i+'">'+i+'</span>';
-				}
-				$(".rptIntfPortlet .showSection .showMore span.content").html(htmlCode);
-			}else{
-				beforeArrayPage=(indexArrayPage-1)*arrayLength;
-				afterArrayPage=indexArrayPage*arrayLength+1;
-				htmlCode+='<span onclick="servlet(this)" mark="'+beforeArrayPage+'">...</span>';
-				for(var i=(beforeArrayPage+1);i<afterArrayPage;i++){
-					htmlCode+='<span onclick="servlet(this)" mark="'+i+'">'+i+'</span>';
-				}
-				htmlCode+='<span onclick="servlet(this)" mark="'+afterArrayPage+'">...</span>';
-				$(".rptIntfPortlet .showSection .showMore span.content").html(htmlCode);
-			}
-		}
-	}
-</script>
+	  </script>
 </html>

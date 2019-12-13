@@ -8,7 +8,17 @@
 	<script type="text/javascript" src="/yuuki/functionjs/paging.js"></script>
 	<link rel="stylesheet" href="/yuuki/css/paging.css">
 	<link rel="stylesheet" href="/yuuki/article/css/articleDetail.css">
-	<link rel="stylesheet" href="/yuuki/css/commom.css">
+    <link rel="stylesheet" href="/yuuki/css/commom.css">
+    
+    <link href="/yuuki/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/yuuki/froala-editor/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="/yuuki/froala-editor/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="/yuuki/froala-editor/js/plugins/image.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/font_size.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/plugins/char_counter.min.js"></script>
+	<script type="text/javascript" src="/yuuki/froala-editor/js/languages/zh_cn.js"></script>
+
     <title>文章内容</title>
     <div class="navigation"></div>
     <link rel="stylesheet" href="/yuuki/css/navigation.css">
@@ -21,39 +31,11 @@
 <div class="isbelong"></div>
 <div class="commom"></div>
 
-<form action="" method="post">
-       
-        <!-- 加载编辑器的容器 -->
-        <script id="container" name="contentString" type="text/plain">
-        这里写你的初始化内容
-        </script>
-        <p>
-        <input type="button" onclick="addComment()" value="发表评论">
-        </p>
-    </form>
-    <!-- 配置文件 -->
-    <script type="text/javascript" src="/yuuki/ueditor/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/yuuki/ueditor/ueditor.all.js"></script>
-    <!-- 实例化编辑器 -->
-    <script type="text/javascript">
-        var ue = UE.getEditor('container',{
-        initialFrameWidth : '100%',//宽度
-        initialFrameHeight: 200,//高度
-        toolbars:[
-        [
-            'fullscreen', 'source', '|', 'undo', 'redo', '|',
-            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-            'directionalityltr', 'directionalityrtl', 'indent', '|',
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-            'simpleupload', 'insertimage', 'emotion'
-        ]
-     ]//控制ueditor头部展示按钮
-    });
-    </script>
+<div id="froala-editor">    
+</div>
+<p>
+    <button id="submit" type="button" onclick="addComment()">提交</button>
+</p>
 
 <div class="comment">
 	<div class="addComment" id="addComment"></div>
@@ -65,6 +47,6 @@
 <script type="text/javascript" src="/yuuki/article/js/articleDetail.js"></script>
 <script type="text/javascript" src="/yuuki/article/js/comment.js"></script>
 <script type="text/javascript" src="/yuuki/functionjs/navigation.js"></script>
-
+<script type="text/javascript" src="/yuuki/functionjs/froalaParams.js"></script>
 </body>
 </html>

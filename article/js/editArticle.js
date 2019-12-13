@@ -19,9 +19,8 @@ function articleUpdate(){
             if (data.status == 200) {
                 $("#article-title").attr("value",data.data.title);
                 $("#article-id").attr("value",idValue);
-                UE.getEditor('container').ready(function(){
-                    UE.getEditor('container').setContent(data.data.contentString);
-                });
+                editor.html.insert(data.data.contentString,true);
+                console.log("获取编辑内容:"+editor.html.get());
             }else if (data.status == 401) {
                 window.location.href = "login.html"
             }else{
@@ -47,18 +46,15 @@ function articleEdit(){
             'Accept': 'application/json',  
             'Content-Type': 'application/json'  
             },  
-
-
             data:JSON.stringify({"id":idValue,"title":$("#article-title").val(),
-                "contentString":UE.getEditor('container').getContent()}),
+                "contentString":editor.html.get()}),
             xhrFields: {
             withCredentials: true
             },
             crossDomain: true,
             success:function(datas){
                 if (datas.status == 200) {
-                    console.log(datas);
-                  
+                    console.log("编辑内容:"+editor.html.get());
                     if (document.referrer = document.location) {
                         window.location.href = "/yuuki/article/html/articleDetail.html?id="+datas.data.id;
                     }else{
